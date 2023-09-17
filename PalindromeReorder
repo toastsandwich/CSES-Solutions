@@ -1,0 +1,72 @@
+using namespace std;
+// using namespace boost::multiprecision;
+// using namespace boost::algorithm;
+ 
+// #include <boost/multiprecision/cpp_int.hpp>
+// #include <boost/algorithm/string.hpp>
+#include <bits/stdc++.h>
+#define      int         long long int
+//#define    bigInt      cpp_int
+#define      endl        "\n"
+#define      fast        ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+#define      all(x)      x.begin(),x.end()
+#define      NO          cout << "NO" << '\n'
+#define      YES         cout << "YES" << '\n'
+#define 	 ss          second
+#define		 ff          first
+#define      CASE(i)     cout << "TESTCASE #" << i << endl
+template<typename T>
+void debug(T x) {
+    cerr << "debug :" << x << endl;
+}
+ 
+void solve(){
+	string str;
+	cin >> str;
+	map<char, int> frq;
+	for(auto x: str){
+		frq[x]++;
+	}
+	int oddcnt = 0;
+	for(auto x: frq) {
+		if(x.ss % 2) {
+			oddcnt++;
+		}
+	}
+	if(oddcnt > 1) {
+		cout << "NO SOLUTION" << endl;
+		return ;
+	}
+	int cnt = 0;
+	string a = "";
+	string b = "";
+	string odd;
+	for(auto &x: frq) {
+		if(x.ss % 2) {
+			for(int i = 0; i < (x.ss - 1) / 2; i++) {
+				a.push_back(x.ff);
+			}
+			odd = x.ff;
+		}
+		else {
+			for(int i = 0; i < x.ss / 2; i++) {
+				a.push_back(x.ff);
+			}
+			x.ss = 0;
+		}
+	}
+	
+	cout << a << odd;
+	reverse(a.begin(), a.end()); cout << a << endl;
+}
+ 
+int32_t main() {
+    fast;
+    int t = 1;
+    // cin >> t;
+    // int p = 1;
+    while(t--) {
+        // CASE(p++);
+        solve();
+    }
+}
